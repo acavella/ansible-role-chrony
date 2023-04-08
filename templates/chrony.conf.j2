@@ -40,7 +40,7 @@ rtcsync
 {% if chrony_allow_networks|length > 0 %}
 # Allow NTP client access from local network.
 {% for network in chrony_allow_networks %}
-{{ network }}
+allow {{ network }}
 {% endfor %}
 {% endif %}
 
