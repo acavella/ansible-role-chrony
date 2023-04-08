@@ -3,4 +3,4 @@ chrony_ntp_servers:
   - 192.168.0.10 iburst
   - 192.168.0.11 iburst
 chrony_ntp_pools: []
-chrony_is_isolated: true
+chrony_is_local: true # Allow chrony to appear synchonized without source.
