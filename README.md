@@ -10,7 +10,7 @@ An Ansible Role to install and configure the chrony daemon on Linux.
 
 | Name | Version | Notes |
 | ----- | ----- | ----- |
-| Red Hat Enterprise Linux | 8.x | NA |
+| Red Hat Enterprise Linux | 7,8,9 | NA |
 | Ansible | 2.9+ | NA |
 
 ## Role Variables
@@ -18,20 +18,21 @@ An Ansible Role to install and configure the chrony daemon on Linux.
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
 ```yaml
-# Public ethernet adapter
-public_ethernet_interface: eth0
-
-# Port that must be accessible via public
-wireguard_port: 51820
-```
-
-Private and public keys used to define initial server and client configurations.
-
-```yaml
-server_private_key_encoded:  set to generated wireguard server private key, base64 encoded.
-client_public_key_encoded:   set to generated wireguard client public key, base64 encoded.
-server_private_key_decoded:  base64 decoded version of above key, used in wg0.conf.j2
-client_public_key_decoded:   base64 decoded version of above key, used in wg0.conf.j2
+# Specifies an NTP server which can be used as a time source.
+chrony_ntp_servers: []
+# Used to specify a pool of NTP servers rather than a single NTP server.
+chrony_ntp_pools: []
+# Specifies a symmetric association with an NTP peer instead of a client/server association with an NTP server.
+chrony_ntp_peers: 
+  - 192.168.0.11 iburst
+  - 192.168.0.12 iburst
+# Enables a local reference mode, which allows chronyd operating as an NTP server when no real time source is available.
+chrony_is_local: true 
+# Designate a particular subnet from which NTP clients are allowed to access the NTP server.
+chrony_allow_networks:
+  - 192.168.0.0/16
+# Location of the file containing symmetric keys which are shared between NTP servers and clients, or peers.
+chrony_keyfile: /etc/chrony.keys
 ```
 
 ## Dependencies
@@ -41,9 +42,9 @@ None.
 ## Example Playbook
 
 ```yaml
-- hosts: myserver
-    roles:
-      - { role: acavella.wireguard }
+- hosts: localhost
+  roles:
+    - { role: acavella.chrony }
 ```
 ## License
 
@@ -51,4 +52,4 @@ GNU General Public License v3.0
 
 ## Author Information
 
-This role was created in 2021 by [Tony Cavella](https://www.cavella.com/)
+This role was created in 2023 by [Tony Cavella](https://www.cavella.com/)
