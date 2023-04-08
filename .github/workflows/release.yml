@@ -1,6 +1,6 @@
 ---
 # This workflow requires a GALAXY_API_KEY secret present in the GitHub
-# repository or organization.
+# repository or organization.Updated.
 #
 # See: https://github.com/marketplace/actions/publish-ansible-role-to-galaxy
 # See: https://github.com/ansible/galaxy/issues/46
