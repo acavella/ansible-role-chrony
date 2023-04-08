@@ -1,16 +1,17 @@
-# Ansible Role: Wireguard
+# Ansible Role: Chrony
 
-![CI](https://github.com/acavella/ansible-role-wireguard/actions/workflows/ci.yml/badge.svg)
-![GitHub last commit](https://img.shields.io/github/last-commit/acavella/ansible-role-wireguard)
-![GitHub repo size](https://img.shields.io/github/repo-size/acavella/ansible-role-wireguard)
+![CI](https://github.com/acavella/ansible-role-chrony/actions/workflows/ci.yml/badge.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/acavella/ansible-role-chrony)
+![GitHub repo size](https://img.shields.io/github/repo-size/acavella/ansible-role-chrony)
 
-An Ansible Role that installs and configures Wireguard on Linux.
-
-12/9/21: Version 0.9.1 temporarily removes support for CentOS and Fedora.  
+An Ansible Role to install and configure the chrony daemon on Linux.
 
 ## Requirements
 
-N/A
+| Name | Version | Notes |
+| ----- | ----- | ----- |
+| Red Hat Enterprise Linux | 8.x | NA |
+| Ansible | 2.9+ | NA |
 
 ## Role Variables
 
