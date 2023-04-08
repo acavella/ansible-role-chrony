@@ -5,7 +5,7 @@
     state: latest
     update_cache: yes
 - name: Update template and copy to destination server
-  template:
+  ansible.builtin.template:
     src: templates/chrony.conf.j2
     dest: /etc/chrony.conf
     owner: root
