@@ -1,3 +1,7 @@
 ---
-public_ethernet_interface: eth0
-wireguard_port: 51820
+
+chrony_ntp_servers:
+  - 172.25.10.10 iburst
+  - 172.25.10.11 iburst
+chrony_ntp_pools: []
+server_is_isolated: true
