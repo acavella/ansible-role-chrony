@@ -13,6 +13,13 @@ pool {{ pool }}
 {% endfor %}
 {% endif %}
 
+{%- if chrony_ntp_peers|length > 0 %}
+# List of NTP pools to use
+{% for peers in chrony_ntp_peers %}
+peer {{ peer }}
+{% endfor %}
+{% endif %}
+
 # Record the rate at which the system clock gains/losses time.
 driftfile /var/lib/chrony/drift
 
@@ -30,8 +37,12 @@ rtcsync
 # the system clock.
 #minsources 2
 
+{% if chrony_allow_networks|length > 0 %}
 # Allow NTP client access from local network.
-#allow 192.168.0.0/16
+{% for network in chrony_allow_networks %}
+{{ server }}
+{% endfor %}
+{% endif %}
 
 {% if chrony_is_local == 'true' %}
 # Serve time even if not synchronized to a time source.
@@ -39,7 +50,7 @@ local stratum 10
 {% endif %}
 
 # Specify file containing keys for NTP authentication.
-keyfile /etc/chrony.keys
+keyfile {{ chrony_keyfile }}
 
 # Get TAI-UTC offset and leap seconds from the system tz database.
 leapsectz right/UTC

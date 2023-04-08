@@ -1,6 +1,10 @@
 ---
-chrony_ntp_servers:
-  - 192.168.0.10 iburst
-  - 192.168.0.11 iburst
+chrony_ntp_servers: []
 chrony_ntp_pools: []
+chrony_ntp_peers: 
+  - 192.168.0.11 iburst
+  - 192.168.0.12 iburst
 chrony_is_local: true # Allow chrony to appear synchonized without source.
+chrony_allow_networks:
+  - 192.168.0.0/16
+chrony_keyfile: /etc/chrony.keys
