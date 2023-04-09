@@ -12,6 +12,8 @@
     group: root
     mode: 0644
     backup: true
+- include_tasks: firewall.yml
+  when: chrony_set_firewall | bool
 - name: Restart and enable chrony daemon
   ansible.builtin.service:
     name: chronyd

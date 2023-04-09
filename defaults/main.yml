@@ -8,3 +8,4 @@ chrony_is_local: true
 chrony_allow_networks:
   - 192.168.0.0/16
 chrony_keyfile: /etc/chrony.keys
+chrony_set_firewall: true

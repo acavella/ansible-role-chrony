@@ -1,0 +1,6 @@
+---
+- name: Permit traffic in default zone on port 53/udp
+  ansible.posix.firewalld:
+    port: 53/udp
+    permanent: true
+    state: enabled
